@@ -3,5 +3,5 @@ Music manager in python
 
 ## Folders
 - app: application code
-- web: django web code
 - resources: folder for db
+- web: django web code
