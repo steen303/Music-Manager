@@ -15,8 +15,8 @@ def write_file():
 
 def set_default_config():
     config['DEFAULT'] = {'readOnlySection': 'false', }
-    config['discogs'] = {}
-    config['discogs']['token'] = 'LpYGwMzazdfdxAHCTRZhStSPMeyEVGNMYynuACzD'
+    config['youtube'] = {}
+    config['youtube']['API'] = 'LpYGwMzazdfdxAHCTRZhStSPMeyEVGNMYynuACzD'
 
     config['database'] = {}
     database = config['database']
