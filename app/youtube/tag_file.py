@@ -51,7 +51,7 @@ def read_tags_trom_files(files):
 
 class MusicFile:
     def __init__(self, location):
-        self.filename = location.name
+        self.filename = location.title
         self.extension = location.suffix
         self.location = str(location)
         self.album = ''

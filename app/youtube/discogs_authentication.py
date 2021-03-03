@@ -35,7 +35,7 @@ def oauth_authentication_req():
     verifier = input("'Verification code :'")
     access_token, access_secret = d.get_access_token(verifier)
     me = d.identity()
-    print("I'm {0} ({1}) from {2}.".format(me.name, me.username, me.location))
+    print("I'm {0} ({1}) from {2}.".format(me.title, me.username, me.location))
 
     # fixme not sure if values get saved
     set_value('discogs', 'oauth_token', access_token)

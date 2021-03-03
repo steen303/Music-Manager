@@ -1,6 +1,6 @@
 from configparser import ConfigParser, NoSectionError, NoOptionError
 
-import conf.default_configurator as default
+import default_configurator as default
 
 conf = ConfigParser(allow_no_value=True)
 
@@ -58,4 +58,3 @@ def get_values_section(section_name):
 #     configurations.pop('readonlysection')
 #     print(configurations)
 #     return configurations
-©

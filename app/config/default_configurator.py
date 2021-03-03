@@ -10,13 +10,13 @@ def restore():
 
 
 def write_file():
-    config.write(open('conf/settings.cfg', 'w'))
+    config.write(open('../../resourses/settings.cfg', 'w'))
 
 
 def set_default_config():
     config['DEFAULT'] = {'readOnlySection': 'false', }
     config['youtube'] = {}
-    config['youtube']['API'] = 'LpYGwMzazdfdxAHCTRZhStSPMeyEVGNMYynuACzD'
+    config['youtube']['API'] = 'AIzaSyApDD-ZgnAZcUnQnwPtnR2ztqk3H1IANag'
 
     config['database'] = {}
     database = config['database']

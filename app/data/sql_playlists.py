@@ -1,17 +1,20 @@
+import logging
+from operator import attrgetter
+
+from app.db import database as db
+
 import os
-
 import googleapiclient.discovery
-
 import sqlite3
-from app.domain.playlist import Playlist, Playlists
 
 
-class YtPlaylists:
-    def __init__(self, channel_id="UC-Lxw-5-0PEFAKvH6g8MAcQ"):
+class SqlPlaylists:
+    def __init__(self, ):
+        self.playlists = []
         self.channel_id = channel_id
-        self.items = Playlists(channel_id)
-        self.get_from_youtube()
+        self.items = []
 
+    @staticmethod
     def get_from_youtube(self):
         # Disable OAuthlib's HTTPS verification when running locally.
         # *DO NOT* leave this option enabled in production.
@@ -32,21 +35,11 @@ class YtPlaylists:
         response = request.execute()
 
         print(response)
-        self.items = self.create_playlists(response["items"])
         self.items = response["items"]
 
-    def get_playlists(self):
-        return self.items
+    def get_from_db(self):
+        pass
         # TODO get playlists from database
-
-    def create_playlist(self, id, title=None, description=None):
-        playlist = Playlist(id, title, description)
-        return playlist
-
-    def create_playlists(self, respons_items):
-        for item in respons_items:
-            self.items.append(
-                self.create_playlist(item["id"], item["snippet"]["title"], item["snippet"]["description"]))
 
     def store_in_db(self):
         conn = sqlite3.connect('database.sqlite')
@@ -63,3 +56,51 @@ class YtPlaylists:
             print()
             print(item["id"])
             print(item["snippet"]["title"])
+
+
+class Album:
+    def __init__(self, file_title, online_title='', online_id=''):
+        self.offline_title = file_title
+        self.online_id = online_id
+        self.online_title = online_title
+        self._compilation = ''
+        self._artist = ''
+        self._releaseyear = None
+        self._year = ''
+        self._country = None
+        self._url = None
+
+    def __repr__(self):
+        return repr((self.offline_title, self.online_title, self.online_id))
+
+    @property
+    def artist(self):
+        return self._artist
+
+    @artist.setter
+    def artist(self, value):
+        self._artist = value
+
+    @property
+    def year(self):
+        return self._year
+
+    @year.setter
+    def year(self, value):
+        self._year = value
+
+    @property
+    def compilation(self):
+        return self._compilation
+
+    @compilation.setter
+    def compilation(self, value):
+        self._compilation = value
+
+    @property
+    def country(self):
+        return self._country
+
+    @country.setter
+    def country(self, value):
+        self._country = value

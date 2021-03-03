@@ -3,8 +3,8 @@ import pathlib
 import sqlite3
 from sqlite3 import Error
 
-from conf.configurator import get_value
-from db.statements import Statements as Stmt
+from app.conf.configurator import get_value
+from app.db.statements import Statements as Stmt
 import logging
 
 

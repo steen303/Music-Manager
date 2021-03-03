@@ -15,7 +15,7 @@ class DiscogsTagger:
         # totest test
         if results:
             artist = results[0]
-            return artist_tag, artist.name, artist.id
+            return artist_tag, artist.title, artist.id
         return artist_tag, '', ''
 
     def get_album(self, song, search_method=3):
@@ -31,7 +31,7 @@ class DiscogsTagger:
         # totest test
         if results:
             release_id, title, year, artist = self.album_result_to_val(results[0])
-            return song.album, title, release_id, year, artist.name
+            return song.album, title, release_id, year, artist.title
         elif 0 < search_method <= 2:
             search_method = search_method - 1
             self.get_album(song, search_method)

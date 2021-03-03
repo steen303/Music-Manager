@@ -1,6 +1,6 @@
 import multiprocessing
 from multiprocessing import JoinableQueue
-import music_discovery_manager.conf as conf
+import config as conf
 from music_discovery_manager.data.songs import Songs
 from db import database as db
 from tags import scan_files_and_store, read_tags_trom_files
